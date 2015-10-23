@@ -1,14 +1,14 @@
-StatsD + Graphite + Grafana + Kamon Dashboard
+StatsD + Graphite + Grafana 2
 ---------------------------------------------
 
-This image contains a sensible default configuration of StatsD, Graphite and Grafana, and comes bundled with a example
-dashboard that gives you the basic metrics currently collected by Kamon for both Actors and Traces. There are two ways
-for using this image:
+This image contains a sensible default configuration of StatsD, Graphite and Grafana, and comes bundled with an example
+dashboard for monitoring [work-pipeline](https://github.com/iheartradio/work-pipeline) metrics.
+There are two ways of using this image:
 
 
 ### Using the Docker Index ###
 
-This image is published under [Kamon's repository on the Docker Index](https://index.docker.io/u/kamon/) and all you
+This image is published under [iheartradio's repository on the Docker Index](https://hub.docker.com/r/iheartradio/docker-grafana-graphite/) and all you
 need as a prerequisite is having Docker installed on your machine. The container exposes the following ports:
 
 - `80`: the Grafana web interface.
@@ -18,7 +18,7 @@ need as a prerequisite is having Docker installed on your machine. The container
 To start a container with this image you just need to run the following command:
 
 ```bash
-docker run -d -p 80:80 -p 8125:8125/udp -p 8126:8126 --name kamon-grafana-dashboard kamon/grafana_graphite
+docker run -d -p 80:80 -p 8125:8125/udp -p 8126:8126 --name grafana-dashboard iheartradio/docker-grafana-graphite
 ```
 
 If you already have services running on your host that are using any of these ports, you may wish to map the container
@@ -28,17 +28,20 @@ in the [Docker documentation](http://docs.docker.io/use/port_redirection/#port-r
 
 ### Building the image yourself ###
 
-The Dockerfile and supporting configuration files are available in our [Github repository](https://github.com/kamon-io/docker-grafana-graphite).
+The Dockerfile and supporting configuration files are available in our [Github repository](https://github.com/iheartradio/docker-grafana-graphite).
 This comes specially handy if you want to change any of the StatsD, Graphite or Grafana settings, or simply if you want
 to know how tha image was built. The repo also has `build` and `start` scripts to make your workflow more pleasant.
 
 
-### Using the Dashboard ###
+### Using the Dashboards ###
 
-Once your container is running all you need to do is open your browser pointing to the host/port you just published and
-play with the dashboard at your wish. We hope that you have a lot of fun with this image and that it serves it's
-purpose of making your life easier. This should give you an idea of how the dashboard looks like when receiving data
-from one of our toy applications:
+Once your container is running all you need to do is:
+- open your browser pointing to the host/port you just published
+- login with the default username (admin) and password (admin)
+- configure a new datasource to point at the Graphite metric data (URL - http://localhost:8000) and replace the default Grafana test datasource for your graphs
+- then play with the dashboard at your wish...
 
-![Kamon Dashboard](http://kamon.io/assets/img/kamon-statsd-grafana.png)
-![System Metrics Dashboard](http://kamon.io/assets/img/kamon-system-metrics.png)
+We hope that you have a lot of fun with this image and that it serves its purpose of making your life easier.
+
+![WorkPipeline Dashboard](dashboard.png)
+
