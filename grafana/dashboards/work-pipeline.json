@@ -39,12 +39,12 @@
           "legend": {
             "avg": false,
             "current": true,
+            "hideEmpty": true,
             "max": false,
             "min": false,
             "show": true,
             "total": false,
-            "values": true,
-            "hideEmpty": true
+            "values": true
           },
           "lines": true,
           "linewidth": 2,
@@ -60,7 +60,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "target": "alias(stats.counters.$namespace.$pipelineName.work.completed.rate, 'success')",
+              "target": "aliasSub(stats.counters.$namespace.$pipelineName.work.completed.rate, '.*$namespace.(.*).work.completed.rate', 'success (\\1)')",
               "textEditor": false
             }
           ],
@@ -105,12 +105,12 @@
           "legend": {
             "avg": false,
             "current": true,
+            "hideEmpty": true,
             "max": false,
             "min": false,
             "show": true,
             "total": false,
-            "values": true,
-            "hideEmpty": true
+            "values": true
           },
           "lines": true,
           "linewidth": 2,
@@ -127,11 +127,11 @@
           "steppedLine": false,
           "targets": [
             {
-              "target": "alias(stats.counters.$namespace.$pipelineName.work.failed.count, 'failure')",
+              "target": "aliasSub(stats.counters.$namespace.$pipelineName.work.failed.count, '.*$namespace.(.*).work.failed.count', 'failure (\\1)')",
               "textEditor": false
             },
             {
-              "target": "alias(stats.counters.$namespace.$pipelineName.work.timedOut.count, 'timeout')",
+              "target": "aliasSub(stats.counters.$namespace.$pipelineName.work.timedOut.count, '.*$namespace.(.*).work.timedOut.count', 'timeout (\\1)')",
               "textEditor": true
             }
           ],
@@ -159,76 +159,6 @@
       "editable": true,
       "height": "250px",
       "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "datasource": null,
-          "decimals": 0,
-          "editable": true,
-          "error": false,
-          "fill": 1,
-          "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "id": 1,
-          "legend": {
-            "avg": false,
-            "current": true,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": true,
-            "hideEmpty": true
-          },
-          "lines": true,
-          "linewidth": 2,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "span": 6,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "hide": false,
-              "target": "alias(stats.gauges.$namespace.$pipelineName.queue.length, 'queue length')",
-              "textEditor": true
-            },
-            {
-              "hide": true,
-              "target": "alias(stats.gauges.$namespace.$pipelineName.queue.maxLength, 'max length')",
-              "textEditor": true
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Queue Length",
-          "tooltip": {
-            "shared": true,
-            "value_type": "cumulative"
-          },
-          "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
-          ]
-        },
         {
           "aliasColors": {
             "enqueue rejected": "#BF1B00",
@@ -260,12 +190,12 @@
           "legend": {
             "avg": false,
             "current": true,
+            "hideEmpty": true,
             "max": false,
             "min": false,
             "show": true,
             "total": false,
-            "values": true,
-            "hideEmpty": true
+            "values": true
           },
           "lines": true,
           "linewidth": 2,
@@ -282,11 +212,11 @@
           "steppedLine": false,
           "targets": [
             {
-              "target": "alias(stats.counters.$namespace.$pipelineName.queue.enqueued.rate, 'enqueued')",
+              "target": "aliasSub(stats.counters.$namespace.$pipelineName.queue.enqueued.rate, '.*$namespace.(.*).queue.enqueued.rate', 'accepted (\\1)')",
               "textEditor": true
             },
             {
-              "target": "alias(stats.counters.$namespace.$pipelineName.queue.enqueueRejected.rate, 'rejected')",
+              "target": "aliasSub(stats.counters.$namespace.$pipelineName.queue.enqueueRejected.rate, '.*$namespace.(.*).queue.enqueueRejected.rate', 'rejected (\\1)')",
               "textEditor": true
             }
           ],
@@ -304,26 +234,15 @@
             "short",
             "short"
           ]
-        }
-      ],
-      "title": "Row 2"
-    },
-    {
-      "collapse": false,
-      "editable": true,
-      "height": "250px",
-      "panels": [
+        },
         {
-          "aliasColors": {
-            "Max size": "#447EBC",
-            "Utilized": "#7EB26D"
-          },
+          "aliasColors": {},
           "bars": false,
           "datasource": null,
           "decimals": 0,
           "editable": true,
           "error": false,
-          "fill": 10,
+          "fill": 1,
           "grid": {
             "leftLogBase": 1,
             "leftMax": null,
@@ -336,43 +255,44 @@
             "threshold2": null,
             "threshold2Color": "rgba(234, 112, 112, 0.22)"
           },
-          "id": 3,
+          "id": 1,
           "legend": {
             "avg": false,
             "current": true,
+            "hideEmpty": true,
             "max": false,
             "min": false,
             "show": true,
             "total": false,
-            "values": true,
-            "hideEmpty": true
+            "values": true
           },
           "lines": true,
-          "linewidth": 1,
+          "linewidth": 2,
           "links": [],
-          "nullPointMode": "connected",
+          "nullPointMode": "null",
           "percentage": false,
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "repeat": null,
           "seriesOverrides": [],
           "span": 6,
           "stack": false,
-          "steppedLine": true,
+          "steppedLine": false,
           "targets": [
             {
-              "target": "alias(stats.gauges.$namespace.$pipelineName.pool.size, 'Max size')",
+              "hide": false,
+              "target": "aliasSub(stats.gauges.$namespace.$pipelineName.queue.length, '.*$namespace.(.*).queue.length', 'queue length (\\1)')",
               "textEditor": true
             },
             {
-              "target": "alias(stats.gauges.$namespace.$pipelineName.pool.utilized, 'Utilized')",
+              "hide": true,
+              "target": "aliasSub(stats.gauges.$namespace.$pipelineName.queue.maxLength, '.*$namespace.(.*).queue.maxLength', 'max length (\\1)')",
               "textEditor": true
             }
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Pool size",
+          "title": "Queue Length",
           "tooltip": {
             "shared": true,
             "value_type": "cumulative"
@@ -384,7 +304,15 @@
             "short",
             "short"
           ]
-        },
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
         {
           "aliasColors": {},
           "bars": false,
@@ -408,12 +336,12 @@
           "legend": {
             "avg": false,
             "current": true,
+            "hideEmpty": false,
             "max": false,
             "min": false,
             "show": true,
             "total": false,
-            "values": true,
-            "hideEmpty": true
+            "values": true
           },
           "lines": true,
           "linewidth": 2,
@@ -429,11 +357,8 @@
           "steppedLine": false,
           "targets": [
             {
-              "target": "alias(multiplySeries(stats.timers.$namespace.$pipelineName.queue.waitTime.mean, stats.gauges.$namespace.$pipelineName.queue.length),'wait time (total)')",
-              "textEditor": true
-            },
-            {
-              "target": "alias(stats.timers.$namespace.$pipelineName.queue.waitTime.mean,'wait time (per unit of work)')",
+              "hide": false,
+              "target": "aliasSub(stats.timers.$namespace.$pipelineName.queue.waitTime, '.*$namespace.(.*).queue.*','wait time (\\1)')",
               "textEditor": true
             }
           ],
@@ -449,6 +374,210 @@
           "y-axis": true,
           "y_formats": [
             "ms",
+            "short"
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 7,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "target": "aliasSub(stats.timers.$namespace.$pipelineName.queue.avgProcessTime.mean, '.*$namespace.(.*).queue.*','process time (\\1)')",
+              "textEditor": true
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Process Time",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "ms",
+            "short"
+          ]
+        }
+      ],
+      "title": "Row 2"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 9,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "target": "aliasSub(stats.counters.$namespace.$pipelineName.queue.circuitBreakerOpened.count,  '.*$namespace.(.*).queue.*', 'circuit breaker open (\\1)')",
+              "textEditor": true
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Circuit Breaker Opens",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        },
+        {
+          "aliasColors": {
+            "Max size": "#447EBC",
+            "Utilized": "#7EB26D"
+          },
+          "bars": false,
+          "datasource": null,
+          "decimals": 0,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 3,
+          "legend": {
+            "avg": false,
+            "current": true,
+            "hideEmpty": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeat": null,
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": true,
+          "targets": [
+            {
+              "target": "aliasSub(stats.gauges.$namespace.$pipelineName.pool.size, '.*$namespace.(.*).pool.size', 'max size (\\1)')",
+              "textEditor": true
+            },
+            {
+              "target": "aliasSub(stats.gauges.$namespace.$pipelineName.pool.utilized, '.*$namespace.(.*).pool.utilized', 'utilized (\\1)')",
+              "textEditor": true
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Pool size",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
             "short"
           ]
         }
@@ -490,7 +619,7 @@
     }
   ],
   "time": {
-    "from": "now-5m",
+    "from": "now-15m",
     "to": "now"
   },
   "templating": {
@@ -498,7 +627,6 @@
       {
         "allFormat": "glob",
         "current": {
-          "tags": [],
           "text": "workPipeline",
           "value": "workPipeline"
         },
@@ -509,6 +637,56 @@
         "multiFormat": "glob",
         "name": "namespace",
         "options": [
+          {
+            "selected": false,
+            "text": "poweramp-abtest",
+            "value": "poweramp-abtest"
+          },
+          {
+            "selected": false,
+            "text": "poweramp-catalog",
+            "value": "poweramp-catalog"
+          },
+          {
+            "selected": false,
+            "text": "poweramp-email",
+            "value": "poweramp-email"
+          },
+          {
+            "selected": false,
+            "text": "poweramp-google-now",
+            "value": "poweramp-google-now"
+          },
+          {
+            "selected": false,
+            "text": "poweramp-live-meta",
+            "value": "poweramp-live-meta"
+          },
+          {
+            "selected": false,
+            "text": "poweramp-muse",
+            "value": "poweramp-muse"
+          },
+          {
+            "selected": false,
+            "text": "poweramp-session",
+            "value": "poweramp-session"
+          },
+          {
+            "selected": false,
+            "text": "poweramp-station",
+            "value": "poweramp-station"
+          },
+          {
+            "selected": false,
+            "text": "poweramp-subscription",
+            "value": "poweramp-subscription"
+          },
+          {
+            "selected": false,
+            "text": "poweramp-sweeper",
+            "value": "poweramp-sweeper"
+          },
           {
             "selected": true,
             "text": "workPipeline",
@@ -521,26 +699,36 @@
         "type": "query"
       },
       {
-        "allFormat": "glob",
+        "allFormat": "wildcard",
         "current": {
-          "tags": [],
-          "text": "example",
-          "value": "example"
+          "text": "All",
+          "value": "*"
         },
         "datasource": null,
-        "includeAll": false,
+        "includeAll": true,
         "label": "Pipeline",
         "multi": false,
         "multiFormat": "glob",
         "name": "pipelineName",
         "options": [
           {
-            "selected": true,
+            "text": "All",
+            "value": "*",
+            "selected": true
+          },
+          {
             "text": "example",
-            "value": "example"
+            "value": "example",
+            "selected": false
+          },
+          {
+            "text": "googleNowAgent",
+            "value": "googleNowAgent",
+            "selected": false
           }
         ],
         "query": "stats.timers.$namespace.*",
+        "refresh": true,
         "refresh_on_load": false,
         "regex": "",
         "type": "query",
@@ -553,6 +741,6 @@
   },
   "refresh": "5s",
   "schemaVersion": 6,
-  "version": 28,
+  "version": 12,
   "links": []
 }
