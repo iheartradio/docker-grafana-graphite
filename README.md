@@ -2,7 +2,7 @@ StatsD + Graphite + Grafana 2
 ---------------------------------------------
 
 This image contains a sensible default configuration of StatsD, Graphite and Grafana, and comes bundled with an example
-dashboard for monitoring [kanaloa](https://github.com/iheartradio/kanaloa) metrics.
+dashboard for monitoring [kanaloa's reactive work dipatchers](https://github.com/iheartradio/kanaloa) metrics.
 There are two ways of using this image:
 
 ### Using the Docker Index ###
@@ -42,5 +42,5 @@ Once your container is running all you need to do is:
 
 We hope that you have a lot of fun with this image and that it serves its purpose of making your life easier.
 
-![WorkPipeline Dashboard](dashboard.png)
+![Reactive Dispatcher Dashboard](dashboard.png)
 
